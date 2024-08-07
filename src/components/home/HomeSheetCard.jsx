@@ -30,7 +30,7 @@ const sheetsData = [
   },
 ];
 
-const SheetCard = () => {
+const HomeSheetCard = () => {
   return (
     <div id="sheetsCardContainer" className="inline-flex gap-5">
       {sheetsData.map((sheet, index) => {
@@ -50,4 +50,4 @@ const SheetCard = () => {
   );
 };
 
-export default SheetCard;
+export default HomeSheetCard;

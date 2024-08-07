@@ -1,7 +1,7 @@
 import { Users } from "lucide-react";
 import React from "react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import SheetCard from "./SheetCard";
+import HomeSheetCard from "./HomeSheetCard";
 import { Button } from "../ui/button";
 import LatesCapture from "./LatesCapture";
 import MembersModal from "./MembersModal";
@@ -30,7 +30,7 @@ const Home = () => {
             </span>
           </header>
           <div id="plans" className="mt-5 mr-10 cursor-pointer overflow-auto p-5">
-            <SheetCard />
+            <HomeSheetCard />
           </div>
         </div>
         <div id="captureSection" className="mt-24 px-10 pb-40">
