@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { LucideIcon, ChevronLeft, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const SidebarButton = ({ icon: Icon, className, children, subitems, ...props }) => {
+const SidebarButton = ({ icon: Icon, className, children, iconActive, ...props }) => {
   const [showAccordion, setShowAccordion] = useState(false);
 
   return (
@@ -18,12 +18,11 @@ const SidebarButton = ({ icon: Icon, className, children, subitems, ...props }) 
           setShowAccordion(!showAccordion);
         }}
       >
-        <div id="title" className="flex gap-2">
-          <span>{Icon && <Icon size={20} />}</span>
-          <span>{children}</span>
-        </div>
-        <div id="iconChev">
-          {subitems && (showAccordion ? <ChevronDown size={5} /> : <ChevronLeft size={5} />)}
+        <div id="title" className="flex items-center gap-2">
+          <span className={`p-2 ${iconActive ? "rounded-lg bg-gray-200" : ""}`}>
+            {Icon && <Icon size={20} color={`${iconActive ? "blue" : "black"}`} />}
+          </span>
+          <span className="mr-3">{children}</span>
         </div>
       </Button>
       {/* <div id="subContainer" className="flex flex-col items-center">

@@ -1,18 +1,17 @@
-import { Bookmark, Brain, LayoutDashboardIcon, Search, TextSearch, User } from "lucide-react";
+import { House, Globe, Map, Clock, ScanEye, NotebookPen } from "lucide-react";
 
 export const sidebarItems = {
   links: [
-    { label: "داشبورد", href: "/", icon: LayoutDashboardIcon },
-    { label: "مدیریت کاربران", href: "/userManagment", icon: User },
+    { label: "داشبورد", href: "/", icon: House },
+    { label: "عکس ها", href: "/images", icon: Globe },
     {
-      label: "جستجوی متنی",
-      href: "/textSearch",
-      icon: TextSearch,
-      subitems: true,
+      label: "نقشه ها",
+      href: "/sheets",
+      icon: Map,
     },
-    { label: "جستجوی پیشرفته", href: "/advanceSearch", icon: Search, subitems: true },
-    { label: "تخصیص شده", href: "/personCheck", icon: Bookmark },
-    { label: "تحلیل تماس", href: "/callAnalyser", icon: Brain },
+    { label: "تایم لپس ها", href: "/timelapses", icon: Clock },
+    { label: "عکس برداری", href: "/captures", icon: ScanEye },
+    { label: "نت برداری", href: "/feildNotes", icon: NotebookPen },
   ],
   // extras: (
   //   <div>

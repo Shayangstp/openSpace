@@ -1,11 +1,11 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
+import Home from "@/components/home/Home";
 
 const rootPage = () => {
   return (
-    <div>
-      <Button>کلیک </Button>
-      <div>کلیک </div>
+    <div className="">
+      <Home />
     </div>
   );
 };
