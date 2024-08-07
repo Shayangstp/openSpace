@@ -4,6 +4,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import SheetCard from "./SheetCard";
 import { Button } from "../ui/button";
 import LatesCapture from "./LatesCapture";
+import MembersModal from "./MembersModal";
 
 const Home = () => {
   return (
@@ -16,17 +17,8 @@ const Home = () => {
           </span>
         </div>
         <div id="projectMemeber">
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger>
-                {/* should add modal for showing the memebers default must be nothing and just a message  */}
-                <Users color="#1c7bff" className="ml-3 cursor-pointer" />
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>اعضا</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+          {/* add tooltip */}
+          <MembersModal />
         </div>
       </header>
       <div id="overFlow" className="overflow-y-auto h-[90vh]">
