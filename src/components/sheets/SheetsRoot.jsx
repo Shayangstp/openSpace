@@ -2,8 +2,7 @@ import React from "react";
 import SheetCard from "./SheetCard";
 import SheetsController from "./SheetsController";
 import SheetsTimeline from "./SheetsTimeline";
-
-const highlightedDates = ["2023-06-21", "2023-07-21", "2023-08-21"];
+import DateRoller from "./DateRoller";
 
 const SheetsRoot = () => {
   return (
@@ -17,11 +16,8 @@ const SheetsRoot = () => {
         </div>
       </div>
       <div id="timeLine" className="mx-5 mt-10">
-        {/* <SheetsTimeline
-          startDate="2023-06-15"
-          endDate="2023-09-01"
-          highlightedDates={highlightedDates}
-        /> */}
+        {/* <SheetsTimeline /> */}
+        <DateRoller />
       </div>
     </div>
   );

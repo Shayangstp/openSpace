@@ -1,7 +1,93 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
+import { Chrono } from "react-chrono";
+import Calendar from "@vespaiach/horizontal-calendar";
+import "@vespaiach/horizontal-calendar/dist/calendar.css";
+import "@vespaiach/horizontal-calendar/dist/defaultTheme.css";
+
+const events = [
+  {
+    title: "Event 1",
+    cardTitle: "January 2024",
+    cardSubtitle: "01",
+    date: "January 1, 2024", // Full date for better formatting
+    cardDetailedText: "Details about Event 1.",
+  },
+  {
+    title: "Event 2",
+    cardTitle: "February 2024",
+    cardSubtitle: "14",
+    date: "February 14, 2024", // Full date for better formatting
+    cardDetailedText: "Details about Event 2.",
+  },
+  {
+    title: "Event 3",
+    cardTitle: "March 2024",
+    cardSubtitle: "20",
+    date: "March 20, 2024", // Full date for better formatting
+    cardDetailedText: "Details about Event 3.",
+  },
+  // Add more events as needed
+];
+
+const generateTimelineItems = () => {
+  const timelineItems = [];
+  const months = ["January", "February", "March", "April", "May", "June"];
+
+  months.forEach((month, monthIndex) => {
+    for (let day = 1; day <= 5; day++) {
+      timelineItems.push({
+        title: `${month} ${day}`,
+        cardTitle: `${month} ${day}, 2024`,
+        cardSubtitle: `${day}`,
+        cardDetailedText: `Details for ${month} ${day}`,
+        date: `2024-${String(monthIndex + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`,
+      });
+    }
+  });
+
+  return timelineItems;
+};
 
 const SheetsTimeline = ({ startDate, endDate, highlightedDates }) => {
+  const [selection, setSelection] = useState([Date, Date | null]);
+  return (
+    <div className="container mx-auto p-4 overflow-auto">
+      {/* <div className="w-full">
+        <Chrono
+          items={events}
+          mode="HORIZONTAL"
+          theme={{
+            primary: "blue",
+            secondary: "red",
+            cardBgColor: "white",
+            cardForeColor: "black",
+            titleColor: "black",
+            subtitleColor: "gray",
+            textColor: "gray",
+          }}
+          itemWidth={300}
+          slideShow
+        >
+          {events.map((event, index) => (
+            <div key={index} className="text-center p-2">
+              <div className="text-xl font-semibold">{event.cardTitle}</div>
+              <div className="text-lg font-medium text-gray-600">{event.cardSubtitle}</div>
+            </div>
+          ))}
+        </Chrono>
+      </div>
+      <Callender /> */}
+      <Calendar selection={selection} onChange={setSelection} monthBoxWidth={2000} />
+    </div>
+  );
+};
+
+export default SheetsTimeline;
+
+const highlightedDates = ["2023-06-21", "2023-07-21", "2023-08-21"];
+
+export const Callender = ({ startDate, endDate }) => {
   const start = new Date(startDate);
   const end = new Date(endDate);
   const dates = [];
@@ -45,5 +131,3 @@ const SheetsTimeline = ({ startDate, endDate, highlightedDates }) => {
     </div>
   );
 };
-
-export default SheetsTimeline;
