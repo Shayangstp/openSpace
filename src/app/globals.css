@@ -87,7 +87,7 @@ body {
 
 
 
-/* scrollBar */
+/* scrollBar styling  ----------------------------------------*/
 
  ::-webkit-scrollbar {
       width: 10px;
@@ -121,3 +121,22 @@ body {
       border: 1px solid #ccc;
       padding: 10px;
     }
+/* ----------------------------------------------------------- */
+
+
+    /* sheets animation in layer mode  -------------------------*/
+    @keyframes orbit {
+      from {
+        transform: skew(-40deg);
+      }
+      to {
+        transform: skew(40deg);
+      }
+    }
+    
+    .orbiting {
+      animation: orbit 30s infinite alternate;
+      transform: rotateX(10deg);
+    }
+
+    /* ---------------------------------------------------------- */

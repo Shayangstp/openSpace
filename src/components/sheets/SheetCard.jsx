@@ -4,7 +4,7 @@ import Image from "next/image";
 import React, { Fragment } from "react";
 import Plans from "../../../public/images/plansimage.jpg";
 import { useSelector, useDispatch } from "react-redux";
-import { selectSheetsView } from "@/slices/sheetsSlices";
+import { selectSheetsSize, selectSheetsView } from "@/slices/sheetsSlices";
 
 const sheetsData = [
   {
@@ -31,18 +31,33 @@ const sheetsData = [
 
 const SheetCard = () => {
   const sheetsView = useSelector(selectSheetsView);
+  const sheetsSize = useSelector(selectSheetsSize);
+  // sheetsView === 1 layer
   return (
-    <div className={`${sheetsView === 0 ? "flex flex-wrap transition-transform" : ""} gap-1 h-[60vh] overflow-auto p-3`}>
+    <div
+      className={`${
+        sheetsView === 0 ? "flex flex-wrap transition-transform" : ""
+      } gap-1 h-[60vh] overflow-auto p-3`}
+    >
       {sheetsData.map((sheets, index) => {
         return (
-          <div className="flex flex-col gap-1 p-3">
+          <div className="flex flex-col gap-1 p-3" key={index}>
             <div
               id="sheetsContent"
-              className="flex flex-col justify-center items-center p-5 gap-5 rounded-lg border cursor-pointer hover:border-black"
+              className={`flex transition-all duration-500 ${
+                sheetsView === 1 ? "flex-row" : "flex-col justify-center items-center"
+              }  p-5 gap-5 rounded-lg border-2 shadow-sm cursor-pointer hover:border-black`}
             >
               <header>{sheets.title}</header>
-              <div>
-                <Image src={sheets.plan} alt="plan" width={250} />
+              <div className="relative mx-auto">
+                <Image
+                  src={sheets.plan}
+                  alt="plan"
+                  width={sheetsView === 1 ? sheetsSize + 100 : sheetsSize + 250}
+                  className={`shadow-sm ${
+                    sheetsView === 1 ? "transform transition-transform  duration-500 orbiting " : ""
+                  }`}
+                />
               </div>
             </div>
           </div>

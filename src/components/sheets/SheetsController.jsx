@@ -1,8 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { Grid, Layers, LayoutGrid, ZoomIn, ZoomOut } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import { RsetSheetsView, selectSheetsView } from "@/slices/sheetsSlices";
+import { RsetSheetsView, selectSheetsSize, selectSheetsView } from "@/slices/sheetsSlices";
+import { RsetSheetsSize } from "@/slices/sheetsSlices";
 
 const viewsIcon = [
   {
@@ -25,9 +26,10 @@ const SheetsController = () => {
   const dispatch = useDispatch();
 
   const sheetsView = useSelector(selectSheetsView);
+  const sheetsSize = useSelector(selectSheetsSize);
 
   return (
-    <div id="sheetsController" className="mx-10 inline-flex flex-col gap-2">
+    <div id="sheetsController" className="mx-10 inline-flex flex-col gap-2 bg-white">
       <div id="view" className="inline-flex flex-col gap-3 border shadow p-2 rounded-xl">
         {viewsIcon.map((icon, index) => {
           return (
@@ -47,10 +49,18 @@ const SheetsController = () => {
           );
         })}
       </div>
-      <div id="zoom" className="inline-flex flex-col gap-3 border shadow p-2 rounded-xl">
+      <div id="zoom" className="inline-flex flex-col gap-3 border shadow p-2 rounded-xl bg-white">
         {zoomIcon.map((icon, index) => {
+          // index 0 is zoomIn
           return (
-            <span key={index} className={`p-2 cursor-pointer rounded-lg hover:bg-gray-100`}>
+            <span
+              key={index}
+              className={`p-2 cursor-pointer rounded-lg hover:bg-gray-100`}
+              onClick={() => {
+                if (index === 0) dispatch(RsetSheetsSize(sheetsSize + 20));
+                if (index === 1) dispatch(RsetSheetsSize(sheetsSize - 20));
+              }}
+            >
               {icon.icon}
             </span>
           );

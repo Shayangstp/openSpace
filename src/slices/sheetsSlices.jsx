@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   sheetsView: 0,
+  sheetsSize: 50,
 };
 
 // export const handleUserIp = createAsyncThunk(
@@ -27,11 +28,15 @@ const sheetsSlices = createSlice({
     RsetSheetsView: (state, { payload }) => {
       return { ...state, sheetsView: payload };
     },
+    RsetSheetsSize: (state, { payload }) => {
+      return { ...state, sheetsSize: payload };
+    },
   },
 });
 
-export const { RsetSheetsView } = sheetsSlices.actions;
+export const { RsetSheetsView, RsetSheetsSize } = sheetsSlices.actions;
 
 export const selectSheetsView = (state) => state.sheets.sheetsView;
+export const selectSheetsSize = (state) => state.sheets.sheetsSize;
 
 export default sheetsSlices.reducer;
