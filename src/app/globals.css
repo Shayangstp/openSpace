@@ -82,7 +82,7 @@ body {
   /* @apply overflow-y-auto; */
   font-family: "iranSans";
   background-color: #ffff;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 
