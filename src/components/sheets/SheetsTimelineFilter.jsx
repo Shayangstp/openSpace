@@ -51,9 +51,9 @@ const SheetsTimelineFilter = ({ events, onFilterChange }) => {
       <button onClick={handleNextClick} className="ml-2 p-2 border rounded">
         &rarr;
       </button>
-      <button onClick={() => onFilterChange(null)} className="ml-4 p-2 border rounded">
+      {/* <button onClick={() => onFilterChange(null)} className="ml-4 p-2 border rounded">
         Filters
-      </button>
+      </button> */}
     </div>
   );
 };

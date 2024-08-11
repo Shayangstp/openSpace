@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import SheetsTimelineFilter from "./SheetsTimelineFilter";
 import SheetsTimeline, { YearSelector } from "./SheetsTimeline";
+import { useSelector } from "react-redux";
 
 const events = [
   "Sat Jan 05 2024 09:30:00 GMT+0330 (Iran Standard Time)", // January

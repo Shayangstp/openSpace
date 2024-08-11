@@ -4,7 +4,14 @@ import Image from "next/image";
 import React, { Fragment } from "react";
 import Plans from "../../../public/images/plansimage.jpg";
 import { useSelector, useDispatch } from "react-redux";
-import { selectSheetsSize, selectSheetsView } from "@/slices/sheetsSlices";
+import {
+  selectSheetsSize,
+  selectSheetsView,
+  RsetSheetsCurrent,
+  RsetSheetsDetail,
+  selectSheetsDetail,
+  selectSheetsCurrent,
+} from "@/slices/sheetsSlices";
 
 const sheetsData = [
   {
@@ -30,8 +37,10 @@ const sheetsData = [
 ];
 
 const SheetCard = () => {
+  const dispatch = useDispatch();
   const sheetsView = useSelector(selectSheetsView);
   const sheetsSize = useSelector(selectSheetsSize);
+
   // sheetsView === 1 layer
   return (
     <div
@@ -43,6 +52,14 @@ const SheetCard = () => {
         return (
           <div className="flex flex-col gap-1 p-3" key={index}>
             <div
+              onClick={() => {
+                const sheet = {
+                  title: sheets.title,
+                  plan: sheets.plan,
+                };
+                dispatch(RsetSheetsCurrent(sheet));
+                dispatch(RsetSheetsDetail(true));
+              }}
               id="sheetsContent"
               className={`flex transition-all duration-500 ${
                 sheetsView === 1 ? "flex-row" : "flex-col justify-center items-center"

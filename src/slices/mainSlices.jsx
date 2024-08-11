@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-const initialState = {};
+const initialState = {
+  test: false,
+};
 
 // export const handleUserIp = createAsyncThunk(
 //   "auth/handleUserIp",
@@ -22,14 +24,15 @@ const mainSlices = createSlice({
   name: "main",
   initialState,
   reducers: {
-    RsetCustomerLogginPage: (state, { payload }) => {
-      return { ...state, customerLogginPage: payload };
+    RsetTest: (state, { payload }) => {
+      return { ...state, test: payload };
     },
   },
 });
 
-export const { RsetCustomerLogginPage } = mainSlices.actions;
+export const { RsetCustomerLogginPage, RsetTest } = mainSlices.actions;
 
 export const selectCustomerPannel = (state) => state.main.customerPannel;
+export const selectTest = (state) => state.main.test;
 
 export default mainSlices.reducer;
