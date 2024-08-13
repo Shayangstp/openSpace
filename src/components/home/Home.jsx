@@ -1,3 +1,4 @@
+// "use client";
 import { Users } from "lucide-react";
 import React from "react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
@@ -5,8 +6,13 @@ import HomeSheetCard from "./HomeSheetCard";
 import { Button } from "../ui/button";
 import LatesCapture from "./LatesCapture";
 import MembersModal from "./MembersModal";
+// import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
+import Link from "next/link";
 
 const Home = () => {
+  // const router = useRouter();
+
   return (
     <div id="homeContainer" className="px-10 h-[100%]">
       <header id="projectTitle" className="mt-10 flex justify-between bg-white pb-5">
@@ -37,7 +43,9 @@ const Home = () => {
           <header className="flex justify-between">
             <span className="text-[20px]">آخرین کپچر ها</span>
             <span>
-              <Button className="bg-blue-100 text-blue-700 hover:bg-blue-200">مشاهده همه</Button>
+              <Link href={"/images"}>
+                <Button className="bg-blue-100 text-blue-700 hover:bg-blue-200">مشاهده همه</Button>
+              </Link>
             </span>
           </header>
           <div id="latesCaptures" className="mt-5 mr-10 cursor-pointer overflow-auto p-5">

@@ -1,8 +1,10 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
+import moment from "jalali-moment";
 
 export const YearSelector = ({ onYearChange }) => {
-  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
+  const currentYear = moment().jYear();
+  const [selectedYear, setSelectedYear] = useState(currentYear);
 
   const handleYearChange = (e) => {
     const newYear = parseInt(e.target.value, 10);
@@ -21,35 +23,47 @@ export const YearSelector = ({ onYearChange }) => {
         value={selectedYear}
         onChange={handleYearChange}
         className="p-2 border rounded"
-        min="1900"
-        max="2100"
+        min="1300"
+        max="1500"
       />
     </div>
   );
 };
 
-// Function to generate dates every 5 days
 const getDates = (year, events) => {
   const months = [];
-  const eventDates = events.map((event) => new Date(event));
+
+  // Format the events array dates to YYYY-MM-DD (Gregorian format)
+  const formattedEvents = events.map((event) => {
+    const cleanedDate = event.replace("-//", ""); // Clean the date string if needed
+    return moment(cleanedDate).format("YYYY-MM-DD");
+  });
+
+  // Parse event dates to Jalali dates, ensuring correct locale and format
+  const eventDates = events.map((event) => {
+    // Remove "-//" and parse the date
+    const cleanedDate = event.replace("-//", "");
+    return moment(cleanedDate, "YYYY-MM-DD").locale("fa").startOf("day");
+  });
 
   for (let month = 0; month < 12; month++) {
-    const startDate = new Date(year, month, 1);
-    const monthName = startDate.toLocaleString("default", { month: "short" });
+    // Create the start date for the current month in Jalali
+    const startDate = moment(`${year}/${month + 1}/1`, "jYYYY/jM/jD").locale("fa");
+    const monthName = startDate.format("jMMM");
 
     const days = [];
-    const totalDays = new Date(year, month + 1, 0).getDate();
+    const totalDays = startDate.jDaysInMonth();
 
     days.push({ day: monthName, show: true, hasEvent: false });
 
     for (let day = 1; day <= totalDays; day++) {
-      const currentDate = new Date(year, month, day);
-      const hasEvent = eventDates.some(
-        (eventDate) =>
-          eventDate.getDate() === currentDate.getDate() &&
-          eventDate.getMonth() === currentDate.getMonth() &&
-          eventDate.getFullYear() === currentDate.getFullYear()
-      );
+      const currentDate = moment(`${year}/${month + 1}/${day}`, "jYYYY/jM/jD")
+        .locale("fa")
+        .startOf("day")
+        .format("YYYY-MM-DD"); // Format to match the formattedEvents array
+
+      // Check if the current date matches any of the formatted events
+      const hasEvent = formattedEvents.includes(currentDate);
 
       const show = day % 5 === 1 && day !== 1 && day !== 31;
       days.push({ day, show, hasEvent });
@@ -60,13 +74,16 @@ const getDates = (year, events) => {
 
   return months;
 };
-
 const SheetsTimeline = ({ selectedYear, selectedDate, events, onDateSelect }) => {
   const [monthsAndDates, setMonthsAndDates] = useState([]);
+  const [candleHover, setCandleHover] = useState(false);
+  const [candleIndex, setCandleIndex] = useState(null);
 
   useEffect(() => {
     setMonthsAndDates(getDates(selectedYear, events));
   }, [selectedYear, events]);
+
+  console.log(monthsAndDates);
 
   return (
     <div className="w-full h-[150px] overflow-x-auto overflow-y-hidden scroll-snap-x-mandatory scroll-snap-type-x border flex items-end relative">
@@ -78,18 +95,21 @@ const SheetsTimeline = ({ selectedYear, selectedDate, events, onDateSelect }) =>
           >
             <div className="flex flex-nowrap ">
               {monthData.days.map((dayData, dayIndex) => {
-                const isSelected =
-                  selectedDate.getDate() === dayData.day && selectedDate.getMonth() === monthIndex;
+                // const isSelected =
+                //   selectedDate.jDate() === dayData.day && selectedDate.jMonth() === monthIndex;
 
                 return (
                   <div
                     key={dayIndex}
                     className={`inline-block text-center rounded mr-2 ${
-                      isSelected ? "border-dotted border-2 border-black" : ""
+                      false ? "border-dotted border-2 border-black" : ""
                     }`}
                     onClick={() => {
                       if (dayData.hasEvent) {
-                        const newSelectedDate = new Date(selectedYear, monthIndex, dayData.day);
+                        const newSelectedDate = moment(
+                          `${selectedYear}/${monthIndex + 1}/${dayData.day}`,
+                          "jYYYY/jM/jD"
+                        );
                         onDateSelect(newSelectedDate);
                       }
                     }}
@@ -99,19 +119,27 @@ const SheetsTimeline = ({ selectedYear, selectedDate, events, onDateSelect }) =>
                     )}
                     <div className="w-4">{dayData.show && dayData.day}</div>
                     {dayData.hasEvent && (
-                      <>
+                      <Fragment>
                         <div
+                          onMouseEnter={() => {
+                            setCandleHover(true);
+                            setCandleIndex(dayIndex);
+                          }}
+                          onMouseLeave={() => {
+                            setCandleHover(false);
+                            setCandleIndex(null);
+                          }}
                           id="candles"
-                          className={`w-2 h-[105px] absolute top-0 cursor-pointer bg-green-200 ${
-                            isSelected ? "border-dotted border-2 border-black" : ""
+                          className={`w-2 h-[105px] absolute top-0 cursor-pointer bg-green-200 hover:border hover:border-dashed border-black ${
+                            candleHover && candleIndex === dayIndex
+                              ? "border-dotted border-2 border-black"
+                              : ""
                           } `}
                         ></div>
-                        {isSelected && (
-                          <div className="absolute top-0 border p-2">
-                            {selectedDate.toISOString()}
-                          </div>
+                        {candleHover && candleIndex === dayIndex && (
+                          <div className="absolute top-0 z-0 border p-2">{dayData.day}</div>
                         )}
-                      </>
+                      </Fragment>
                     )}
                   </div>
                 );

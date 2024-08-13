@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Plans from "../../../public/images/plansimage.jpg";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -11,6 +11,7 @@ import {
   RsetSheetsDetail,
   selectSheetsDetail,
   selectSheetsCurrent,
+  RsetSheetsView,
 } from "@/slices/sheetsSlices";
 
 const sheetsData = [
@@ -37,9 +38,15 @@ const sheetsData = [
 ];
 
 const SheetCard = () => {
+  const [date, setDate] = useState(null);
+
   const dispatch = useDispatch();
   const sheetsView = useSelector(selectSheetsView);
   const sheetsSize = useSelector(selectSheetsSize);
+
+  useEffect(() => {
+    dispatch(RsetSheetsView(0));
+  }, []);
 
   // sheetsView === 1 layer
   return (

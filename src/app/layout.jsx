@@ -5,8 +5,8 @@ import ReduxStoreProviders from "@/providers/ReduxStoreProviders";
 import DashboardRoot from "@/components/dashboard/DashboardRoot";
 
 export const metadata = {
-  title: "OpenSpace",
-  description: "constructore PM",
+  title: "OpenSpaceDemo",
+  description: "constructore PM Demo",
 };
 
 export default function RootLayout({ children }) {

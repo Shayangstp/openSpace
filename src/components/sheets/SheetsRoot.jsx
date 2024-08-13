@@ -22,10 +22,7 @@ const SheetsRoot = () => {
         )}
         <div id="sheetsCard&Detail">{sheetsDetail ? <SheetDetail /> : <SheetCard />}</div>
       </div>
-      <div id="timeLine" className="mx-5 mt-10">
-        {/* <SheetsTimeline /> */}
-        
-        <SheetsFilterModal />
+      <div id="timeLine" className="mx-5 mt-5">
         <SheetsTimelineRoot />
       </div>
     </div>

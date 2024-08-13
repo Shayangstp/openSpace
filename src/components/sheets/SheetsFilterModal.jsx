@@ -10,7 +10,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { Filter, SlidersHorizontal } from "lucide-react";
 import { Checkbox } from "../ui/checkbox";
-import DtPicker from "react-calendar-datetime-picker";
+import { DtPicker } from "react-calendar-datetime-picker";
 import "react-calendar-datetime-picker/dist/style.css";
 
 const checkBoxData = [
@@ -70,7 +70,23 @@ const SheetsFilterModal = () => {
               );
             })}
             <div>
-              {/* <DtPicker onChange={setDate} type="single" local="en" withTime showWeekend /> */}
+              <DtPicker
+                inputClass="bg-white text-white font-extrabold ali"
+                // placeholder={moment(currentOrder.dateToBargiri).format("jYYYY/jMM/jDD")}
+                // minDate={MinTime}
+                // maxDate={maxDate}
+                onChange={(e) => {
+                  if (e) {
+                    // Convert Solar Hijri date to Gregorian
+                    // const gregorianDate = solarToGregorian(`${e.year}-${e.month}-${e.day}`);
+                    // Get the current date and time
+                    // Add 24 hours to the current date
+                    // dispatch(RsetcompanyTransferDate(gregorianDate));
+                  }
+                }}
+                local="fa"
+                showWeekend
+              />
             </div>
           </>
         </DialogContent>
