@@ -1,16 +1,20 @@
 import { Sun, Waypoints } from "lucide-react";
 import React from "react";
+import ImageBrightnessDrop from "./brightnessDrop/ImageBrightnessDrop";
+import ImageCapturePathDrop from "./capturePathDrop/ImageCapturePathDrop";
 
 const controllerData = [
   {
-    icon: <Sun />,
+    id: "brightness",
+    icon: <ImageBrightnessDrop />,
   },
   {
-    icon: <Waypoints />,
+    id: "capturePath",
+    icon: <ImageCapturePathDrop />,
   },
 ];
 
-const ImageLightLineController = () => {
+const ImageBrightnessCapturePath = () => {
   return (
     <div
       id="controllerContainer"
@@ -27,4 +31,4 @@ const ImageLightLineController = () => {
   );
 };
 
-export default ImageLightLineController;
+export default ImageBrightnessCapturePath;

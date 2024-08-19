@@ -1,10 +1,12 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import mainSlices from "../slices/mainSlices";
 import sheetsSlices from "@/slices/sheetsSlices";
+import imageSlices from "@/slices/imageSlices";
 
 const rootReducer = {
   main: mainSlices,
   sheets: sheetsSlices,
+  image : imageSlices
 };
 
 export const store = configureStore({
