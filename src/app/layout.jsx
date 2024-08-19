@@ -3,6 +3,7 @@ import { iranSans } from "@/lib/font";
 import "./globals.css";
 import ReduxStoreProviders from "@/providers/ReduxStoreProviders";
 import DashboardRoot from "@/components/dashboard/DashboardRoot";
+import "react-calendar-datetime-picker/dist/style.css";
 
 export const metadata = {
   title: "OpenSpaceDemo",

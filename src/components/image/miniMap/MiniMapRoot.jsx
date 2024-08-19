@@ -14,8 +14,8 @@ const MiniMapRoot = () => {
     <div
       id="miniMapRootContainer"
       className={`${
-        imageExpandMinimap ? "w-[600px] h-[300px]" : "w-[250px] h-[150px]"
-      }  bg-white shadow-lg`}
+        imageExpandMinimap ? "w-[600px] h-[300px] " : "w-[250px] h-[150px] "
+      }  bg-white shadow-lg transition-all 0.9s ease-out`}
     >
       <MiniMapDetailController />
       <div id="planImage" className="h-full flex items-center justify-center border">
