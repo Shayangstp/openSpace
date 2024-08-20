@@ -10,6 +10,8 @@ const initialState = {
   imageCapturePathWidth: 50,
   //------------------
   imageZoomLevel: 1,
+  //------------------
+  imageSplitView: false,
 };
 
 // export const handleUserIp = createAsyncThunk(
@@ -53,6 +55,9 @@ const imageSlices = createSlice({
     RsetImageZoomLevel: (state, { payload }) => {
       return { ...state, imageZoomLevel: payload };
     },
+    RsetImageSplitView: (state, { payload }) => {
+      return { ...state, imageSplitView: payload };
+    },
   },
 });
 
@@ -64,6 +69,7 @@ export const {
   RsetImageCapturePathVisibility,
   RsetImageCapturePathWidth,
   RsetImageZoomLevel,
+  RsetImageSplitView,
 } = imageSlices.actions;
 
 export const selectImageExpandMinimap = (state) => state.image.imageExpandMinimap;
@@ -73,5 +79,6 @@ export const selectImageShadow = (state) => state.image.imageShadow;
 export const selectImageCapturePathVisibility = (state) => state.image.imageCapturePathVisibility;
 export const selectImageCapturepathWidth = (state) => state.image.imageCapturePathWidth;
 export const selectImageZoomLevel = (state) => state.image.imageZoomLevel;
+export const selectImageSplitView = (state) => state.image.imageSplitView;
 
 export default imageSlices.reducer;

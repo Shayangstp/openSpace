@@ -39,11 +39,12 @@ const ImageFilterDrop = () => {
             >
               حذف
             </Button>
-            <div id="filter" dir="rtl" className="flex flex-col gap-2 border-b pb-2">
+            <div id="filter" dir="rtl" className="flex flex-col gap-2 pb-2">
               <span className="text-[18px] font-semibold">فیلترها</span>
               <span className="text-[12px] text-gray-600">0 نتیجه</span>
             </div>
           </header>
+          <hr />
           {/* searchType */}
           <div id="searchType" className="space-y-2 flex flex-col gap-2" dir="rtl">
             <h3 className="text-sm font-medium text-gray-500">نوع</h3>

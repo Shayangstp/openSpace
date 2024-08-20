@@ -1,10 +1,10 @@
-import ImageRoot from "@/components/image/ImageRoot";
+import ImageIndex from "@/components/image/ImageIndex";
 import React from "react";
 
 const page = () => {
   return (
     <div>
-      <ImageRoot />
+      <ImageIndex />
     </div>
   );
 };
