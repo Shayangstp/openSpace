@@ -1,20 +1,33 @@
 import React, { Fragment } from "react";
-import { Rewind, FastForward, Play, Pause, MoreHorizontal } from "lucide-react";
+import {
+  Rewind,
+  FastForward,
+  Play,
+  Pause,
+  MoreHorizontal,
+  ChevronLast,
+  ChevronFirst,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectImageSplitView } from "@/slices/imageSlices";
 
 const playerData = [
   {
-    icon: <FastForward className="w-4 h-4 " />,
+    icon: <ChevronLast className="w-3 h-3  " />,
   },
   {
-    icon: <Play className="w-4 h-4" />,
+    icon: <ChevronRight className="w-3 h-3 " />,
   },
   {
-    icon: <Pause className="w-4 h-4" />,
+    icon: <Play className="w-3 h-3 " />,
   },
   {
-    icon: <Rewind className="w-4 h-4" />,
+    icon: <ChevronLeft className="w-3 h-3 " />,
+  },
+  {
+    icon: <ChevronFirst className="w-3 h-3 " />,
   },
 ];
 
@@ -23,21 +36,21 @@ const ImagePlayTimeMoreController = () => {
   return (
     <div
       id="controllerContainer"
-      className="flex w-full items-center gap-5 border shadow py-2 px-4 rounded-xl bg-white"
+      className="flex w-full items-center gap-5 border shadow py-2 px-4 rounded-xl bg-white min-w-max"
     >
-      <div id="player" className="flex gap-2">
+      <div id="player" className="flex gap-1">
         {playerData.map((item, index) => {
           return (
-            <Fragment>
-              {imageSplitView && (index === 1 || index === 2) ? null : (
+            <div className="cursor-pointer">
+              {imageSplitView && (index === 0 || index === 2 || index === 4) ? null : (
                 <div
                   key={index}
-                  className="border rounded-full border-black p-1 hover:bg-gray-100 cursor-pointer hover:text-blue-400"
+                  className="border-2 rounded-full border-black p-1 hover:border-blue-400 cursor-pointer hover:text-blue-400"
                 >
                   {item.icon}
                 </div>
               )}
-            </Fragment>
+            </div>
           );
         })}
       </div>

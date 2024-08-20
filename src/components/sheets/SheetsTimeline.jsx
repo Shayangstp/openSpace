@@ -83,8 +83,6 @@ const SheetsTimeline = ({ selectedYear, selectedDate, events, onDateSelect }) =>
     setMonthsAndDates(getDates(selectedYear, events));
   }, [selectedYear, events]);
 
-  console.log(monthsAndDates);
-
   return (
     <div className="w-full h-[150px] overflow-x-auto overflow-y-hidden scroll-snap-x-mandatory scroll-snap-type-x border flex items-end relative">
       <div className="flex">

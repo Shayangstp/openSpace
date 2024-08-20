@@ -5,12 +5,20 @@ import ImageShareDownloadController from "./controllers/ImageShareDownloadContro
 import ImageSideControllerRoot from "./controllers/ImageSideControllerRoot";
 import ImageFilterCaptureControllerRoot from "./controllers/ImageFilterCaptureControllerRoot";
 import MiniMapRoot from "./miniMap/MiniMapRoot";
-import { selectImageExpandMinimap, RsetImageExpandMinimap } from "@/slices/imageSlices";
+import {
+  selectImageExpandMinimap,
+  RsetImageExpandMinimap,
+  selectImageSplitView,
+  RsetImageSplitView,
+} from "@/slices/imageSlices";
 import { useDispatch, useSelector } from "react-redux";
+import { X } from "lucide-react";
+import { Button } from "../ui/button";
 
 const ImageRoot = () => {
   const dispatch = useDispatch();
   const imageExpandMinimap = useSelector(selectImageExpandMinimap);
+  const imageSplitView = useSelector(selectImageSplitView);
 
   return (
     <div id="imageContainer" className="relative h-[90vh]">
@@ -37,6 +45,18 @@ const ImageRoot = () => {
       >
         <MiniMapRoot />
       </div>
+      {imageSplitView && (
+        <div id="cancelSplitView" className="absolute top-3 right-3">
+          <Button
+            className="bg-white hover:bg-gray-100"
+            onClick={() => {
+              dispatch(RsetImageSplitView(false));
+            }}
+          >
+            <X color="black" />
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

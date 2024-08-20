@@ -16,8 +16,6 @@ const ImageBimSpliteController = () => {
   const dispatch = useDispatch();
   const imageSplitView = useSelector(selectImageSplitView);
 
-  console.log(imageSplitView);
-
   const handleDrop = (index) => {
     // IBM
     if (index === 0) {

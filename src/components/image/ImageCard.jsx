@@ -19,10 +19,7 @@ const ImageCard = () => {
   //for scroll image zoom level
   const containerRef = useRef(null);
 
-  console.log(imageZoomLevel);
-
   const shadowAmount = 1 + imageShadow / 100;
-  console.log(imageBrightness);
   // const shadow = `drop-shadow(0 0 ${imageShadow}px rgba(0, 0, 0, ${imageShadow / 100}))`;
 
   // const bright = `brightness-[${imageBrightness * 2}%]`;

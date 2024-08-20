@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 // import { usePathname } from "next/navigation";
@@ -44,7 +44,7 @@ const SidebarDesktop = (props) => {
                 isActive = pathname === item.href;
                 return (
                   <Link key={index} href={item.href}>
-                    {index === 4 && <hr className="w-[90%] mx-auto mb-3" />}
+                    {(index === 4 || index === 6) && <hr className=" mx-2 mb-3" />}
                     <SidebarButton icon={item.icon} className={buttonClass} iconActive={isActive}>
                       <span
                         className={`${
@@ -65,25 +65,28 @@ const SidebarDesktop = (props) => {
           <div className="absolute left-0 bottom-4 w-full">
             <Popover>
               <PopoverTrigger asChild>
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start flex gap-4 rounded-none hover:text-blue-500"
-                >
-                  <div className="flex justify-between items-center w-full">
-                    <div className="flex items-center gap-2">
-                      <HardHat />
-                      <span
-                        className={`   ${
-                          isExpanded
-                            ? "block opacity-100 transition-opacity 0.3s"
-                            : "transition-opacity 0.1s ease opacity-0 "
-                        }`}
-                      >
-                        تیم
-                      </span>
+                <Fragment>
+                  <hr className="mx-2 mb-2"/>
+                  <Button
+                    variant="ghost"
+                    className="w-full justify-start flex gap-4 rounded-none hover:text-blue-500"
+                  >
+                    <div className="flex justify-between items-center w-full">
+                      <div className="flex items-center gap-2">
+                        <HardHat />
+                        <span
+                          className={`   ${
+                            isExpanded
+                              ? "block opacity-100 transition-opacity 0.3s"
+                              : "transition-opacity 0.1s ease opacity-0 "
+                          }`}
+                        >
+                          تیم
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                </Button>
+                  </Button>
+                </Fragment>
               </PopoverTrigger>
               <PopoverContent className="mb-2 w-56 p-3 ">
                 <div className="space-y-1">
@@ -102,7 +105,6 @@ const SidebarDesktop = (props) => {
                     size="sm"
                     className="w-full bg-red-500 hover:bg-red-400"
                     onClick={() => {
-                      console.log("hi");
                       localStorage.removeItem("token");
                       navigate("/Login");
                     }}

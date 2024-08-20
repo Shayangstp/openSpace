@@ -17,7 +17,9 @@ const SelectShadcn = ({ label, items, placeholder }) => {
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          {label === undefined ? null : <SelectLabel>{label}</SelectLabel>}
+          {label === undefined ? null : (
+            <SelectLabel className="text-[12px] text-gray-500">{label}</SelectLabel>
+          )}
           {items.map((item, index) => {
             return (
               <SelectItem key={index} value={item.value}>

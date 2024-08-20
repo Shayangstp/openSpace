@@ -28,7 +28,6 @@ const SheetsTimelineRoot = () => {
 
   const handleFilterChange = (newDate) => {
     setSelectedDate(newDate);
-    console.log("Selected date:", newDate);
   };
 
   return (
