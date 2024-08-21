@@ -4,8 +4,11 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { LucideIcon, ChevronLeft, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useSelector } from "react-redux";
+import { selectCaptureActive } from "@/slices/captureSlices";
 
-const SidebarButton = ({ icon: Icon, className, children, iconActive, ...props }) => {
+const SidebarButton = ({ icon: Icon, className, children, iconActive, onClick, ...props }) => {
+  const captureActive = useSelector(selectCaptureActive);
   const [showAccordion, setShowAccordion] = useState(false);
 
   return (
@@ -16,6 +19,7 @@ const SidebarButton = ({ icon: Icon, className, children, iconActive, ...props }
         {...props}
         onClick={() => {
           setShowAccordion(!showAccordion);
+          onClick();
         }}
       >
         <div id="title" className="flex items-center gap-2">

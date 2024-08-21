@@ -14,9 +14,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={iranSans.className}>
-        <DashboardRoot>
-          <ReduxStoreProviders>{children}</ReduxStoreProviders>
-        </DashboardRoot>
+        <ReduxStoreProviders>
+          <DashboardRoot>{children}</DashboardRoot>
+        </ReduxStoreProviders>
       </body>
     </html>
   );

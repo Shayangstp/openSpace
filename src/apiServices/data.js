@@ -10,8 +10,8 @@ export const sidebarItems = {
       icon: Map,
     },
     { label: "تایم لپس ها", href: "/timelapses", icon: Clock },
-    { label: "عکس برداری", href: "/captures", icon: ScanEye },
-    { label: "نت برداری", href: "/feildNotes", icon: NotebookPen },
+    // { label: "عکس برداری", href: "#captures", icon: ScanEye },
+    // { label: "نت برداری", href: "#feildNotes", icon: NotebookPen },
   ],
   // extras: (
   //   <div>

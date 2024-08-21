@@ -6,10 +6,12 @@ import { Button } from "@/components/ui/button";
 //ui imports -------------
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import { HardHat, LogOut, MoreHorizontal, Settings } from "lucide-react";
+import { HardHat, LogOut, MoreHorizontal, NotebookPen, ScanEye, Settings } from "lucide-react";
 import SidebarButton from "./SidebarButton";
 import { usePathname } from "next/navigation";
 // import logo from "../../../../assets/logo.png";
+import { useSelector, useDispatch } from "react-redux";
+import { RsetCaptureActive, selectCaptureActive } from "@/slices/captureSlices";
 
 const sideBarHeader = (pathname) => {
   if (pathname === "/textSearch") {
@@ -22,8 +24,10 @@ const sideBarHeader = (pathname) => {
 };
 
 const SidebarDesktop = (props) => {
+  const dispatch = useDispatch();
   const [isExpanded, setIsExpanded] = useState(false);
   const pathname = usePathname();
+  const captureActive = useSelector(selectCaptureActive);
 
   let isActive;
   const buttonClass = `w-full flex justify-between gap-4 rounded-none hover:text-blue-500 ${
@@ -43,22 +47,56 @@ const SidebarDesktop = (props) => {
               {props.sidebarItems.links.map((item, index) => {
                 isActive = pathname === item.href;
                 return (
-                  <Link key={index} href={item.href}>
-                    {(index === 4 || index === 6) && <hr className=" mx-2 mb-3" />}
-                    <SidebarButton icon={item.icon} className={buttonClass} iconActive={isActive}>
-                      <span
-                        className={`${
-                          isExpanded
-                            ? "block opacity-100 transition-opacity 0.3s"
-                            : "transition-opacity 0.1s ease opacity-0 "
-                        }`}
-                      >
-                        {item.label}
-                      </span>
-                    </SidebarButton>
-                  </Link>
+                  <>
+                    <Link key={index} href={item.href}>
+                      {(index === 4 || index === 6) && <hr className=" mx-2 mb-3" />}
+                      <SidebarButton icon={item.icon} className={buttonClass} iconActive={isActive}>
+                        <span
+                          className={`${
+                            isExpanded
+                              ? "block opacity-100 transition-opacity 0.3s"
+                              : "transition-opacity 0.1s ease opacity-0 "
+                          }`}
+                        >
+                          {item.label}
+                        </span>
+                      </SidebarButton>
+                    </Link>
+                  </>
                 );
               })}
+              <hr className="mx-2" />
+              <div id="capture&FeildNote">
+                <SidebarButton
+                  icon={ScanEye}
+                  iconActive={captureActive}
+                  className={`${buttonClass}`}
+                  onClick={() => {
+                    dispatch(RsetCaptureActive(true));
+                  }}
+                >
+                  <div
+                    className={`flex justify-start${
+                      isExpanded
+                        ? "block opacity-100 transition-opacity 0.3s"
+                        : "transition-opacity 0.1s ease opacity-0 "
+                    }`}
+                  >
+                    <span> عکس برداری</span>
+                  </div>
+                </SidebarButton>
+                <SidebarButton icon={NotebookPen} className={`${buttonClass} `}>
+                  <div
+                    className={`flex justify-start${
+                      isExpanded
+                        ? "block opacity-100 transition-opacity 0.3s"
+                        : "transition-opacity 0.1s ease opacity-0 "
+                    }`}
+                  >
+                    <span>نت برداری</span>
+                  </div>
+                </SidebarButton>
+              </div>
             </div>
           )}
 
@@ -66,7 +104,7 @@ const SidebarDesktop = (props) => {
             <Popover>
               <PopoverTrigger asChild>
                 <Fragment>
-                  <hr className="mx-2 mb-2"/>
+                  <hr className="mx-2 mb-2" />
                   <Button
                     variant="ghost"
                     className="w-full justify-start flex gap-4 rounded-none hover:text-blue-500"
