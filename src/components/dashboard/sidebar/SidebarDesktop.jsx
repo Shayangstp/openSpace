@@ -66,14 +66,16 @@ const SidebarDesktop = (props) => {
                 );
               })}
               <hr className="mx-2" />
-              <div id="capture&FeildNote">
+              <div
+                id="capture&FeildNote"
+                onClick={() => {
+                  dispatch(RsetCaptureActive(true));
+                }}
+              >
                 <SidebarButton
                   icon={ScanEye}
                   iconActive={captureActive}
                   className={`${buttonClass}`}
-                  onClick={() => {
-                    dispatch(RsetCaptureActive(true));
-                  }}
                 >
                   <div
                     className={`flex justify-start${

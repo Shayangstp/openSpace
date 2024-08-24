@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { useSelector } from "react-redux";
 import { selectCaptureActive } from "@/slices/captureSlices";
 
-const SidebarButton = ({ icon: Icon, className, children, iconActive, onClick, ...props }) => {
+const SidebarButton = ({ icon: Icon, className, children, iconActive, ...props }) => {
   const captureActive = useSelector(selectCaptureActive);
   const [showAccordion, setShowAccordion] = useState(false);
 
@@ -19,7 +19,6 @@ const SidebarButton = ({ icon: Icon, className, children, iconActive, onClick, .
         {...props}
         onClick={() => {
           setShowAccordion(!showAccordion);
-          onClick();
         }}
       >
         <div id="title" className="flex items-center gap-2">
