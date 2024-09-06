@@ -66,38 +66,45 @@ const SidebarDesktop = (props) => {
                 );
               })}
               <hr className="mx-2" />
-              <div
-                id="capture&FeildNote"
-                onClick={() => {
-                  dispatch(RsetCaptureActive(true));
-                }}
-              >
-                <SidebarButton
-                  icon={ScanEye}
-                  iconActive={captureActive}
-                  className={`${buttonClass}`}
+              <div id="capture&FeildNote">
+                <div
+                  id="capture"
+                  onClick={() => {
+                    dispatch(RsetCaptureActive(true));
+                  }}
                 >
-                  <div
-                    className={`flex justify-start${
-                      isExpanded
-                        ? "block opacity-100 transition-opacity 0.3s"
-                        : "transition-opacity 0.1s ease opacity-0 "
-                    }`}
+                  <SidebarButton
+                    icon={ScanEye}
+                    iconActive={captureActive}
+                    className={`${buttonClass}`}
+                    onClickProps={() => {
+                      dispatch(RsetCaptureActive(true));
+                    }}
                   >
-                    <span> عکس برداری</span>
-                  </div>
-                </SidebarButton>
-                <SidebarButton icon={NotebookPen} className={`${buttonClass} `}>
-                  <div
-                    className={`flex justify-start${
-                      isExpanded
-                        ? "block opacity-100 transition-opacity 0.3s"
-                        : "transition-opacity 0.1s ease opacity-0 "
-                    }`}
-                  >
-                    <span>نت برداری</span>
-                  </div>
-                </SidebarButton>
+                    <div
+                      className={`flex justify-start${
+                        isExpanded
+                          ? "block opacity-100 transition-opacity 0.3s"
+                          : "transition-opacity 0.1s ease opacity-0 "
+                      }`}
+                    >
+                      <span> عکس برداری</span>
+                    </div>
+                  </SidebarButton>
+                </div>
+                <div id="feildNote">
+                  <SidebarButton icon={NotebookPen} className={`${buttonClass} `}>
+                    <div
+                      className={`flex justify-start${
+                        isExpanded
+                          ? "block opacity-100 transition-opacity 0.3s"
+                          : "transition-opacity 0.1s ease opacity-0 "
+                      }`}
+                    >
+                      <span>نت برداری</span>
+                    </div>
+                  </SidebarButton>
+                </div>
               </div>
             </div>
           )}
