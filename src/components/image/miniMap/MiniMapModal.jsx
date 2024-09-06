@@ -7,6 +7,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { SlidersHorizontal } from "lucide-react";
+import { Checkbox } from "@radix-ui/react-checkbox";
+import { DtPicker } from "react-calendar-datetime-picker";
 
 const MiniMapModal = () => {
   return (
@@ -26,9 +29,9 @@ const MiniMapModal = () => {
         <DialogContent>
           <>
             {checkBoxData.map((item, index) => {
-              return (
-                <div id={item.id} className="flex justify-start items-center gap-5 border-b py-3">
-                  <Checkbox id={item.id} />
+              return ( 
+                <div key={index}  id={item.id} className="flex justify-start items-center gap-5 border-b py-3">
+                  <Checkbox key={index} id={item.id} />
                   <label
                     htmlFor={item.id}
                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex gap-2"

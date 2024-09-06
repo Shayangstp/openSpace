@@ -66,6 +66,7 @@ const ImageCapturePathDrop = () => {
             <div className="flex space-x-2 mt-2 justify-center">
               {pathColorData.map((color, index) => (
                 <div
+                  key={index}
                   className={`${
                     color === pathColor
                       ? "w-12 h-12 rounded-full border-2 border-blue-500 p-1 transition-all "

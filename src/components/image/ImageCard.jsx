@@ -9,6 +9,7 @@ import {
   RsetImageZoomLevel,
 } from "@/slices/imageSlices";
 import { useSelector, useDispatch } from "react-redux";
+import Pannellum from "./Pannellum";
 
 const ImageCard = () => {
   const dispatch = useDispatch();
@@ -57,7 +58,7 @@ const ImageCard = () => {
 
   const bright = imageBrightness * 2;
   return (
-    <div id="image" className="relative h-[90vh] misusing-so-many-things" ref={containerRef}>
+    <div id="image"  ref={containerRef}>
       <div>
         {/* make this on the sandbox and make it done */}
         {/* <div
@@ -69,16 +70,7 @@ const ImageCard = () => {
       >
         shayan
       </div> */}
-        <Image
-          src={testimage}
-          alt="testimage"
-          className="h-[90vh]"
-          style={{
-            filter: `brightness(${bright}%) contrast(${shadowAmount}) saturate(${shadowAmount})`,
-            transform: `scale(${imageZoomLevel})`,
-            transition: "transform 0.3s ease-in-out",
-          }}
-        />
+        <Pannellum/>
       </div>
     </div>
   );

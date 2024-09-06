@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import Image from "next/image";
-import Plans from "../../../public/images/plansimage.jpg";
+import Plans from "../../../public/images/plansImage.jpg";
 
 const sheetsData = [
   {
@@ -35,7 +35,7 @@ const HomeSheetCard = () => {
     <div id="sheetsCardContainer" className="inline-flex gap-5">
       {sheetsData.map((sheet, index) => {
         return (
-          <div className="flex gap-5 hover:shadow w-[400px] items-center p-4 rounded-lg">
+          <div key={index} className="flex gap-5 hover:shadow w-[400px] items-center p-4 rounded-lg">
             <div id="plansImage">
               <Image src={sheet.image} width={150} height={50} />
             </div>

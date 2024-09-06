@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import Image from "next/image";
 import { User } from "lucide-react";
-import Plans from "../../../public/images/plansimage.jpg";
+import Plans from "../../../public/images/plansImage.jpg";
 const captureData = [
   {
     username: "شایان گلستانی",
@@ -47,6 +47,7 @@ const LatesCapture = () => {
       {captureData.map((capture, index) => {
         return (
           <div
+            key={index}
             id="captureCard"
             className="inline-flex flex-col gap-3 cursor-pointer hover:shadow-lg transition-shadow 0.6s p-5 rounded-lg w-[400px]"
           >
