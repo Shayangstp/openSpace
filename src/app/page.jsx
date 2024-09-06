@@ -1,7 +1,8 @@
+"use client";
 import React from "react";
 import Home from "@/components/home/Home";
 
-const rootPage = () => {
+const page = () => {
   return (
     <div className="relative">
       <Home />
@@ -9,4 +10,4 @@ const rootPage = () => {
   );
 };
 
-export default {rootPage};
+export default page;

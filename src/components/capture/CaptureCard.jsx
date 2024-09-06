@@ -7,7 +7,7 @@ const CaptureCard = () => {
   return (
     <div id="cardContainer" className="bg-white border border-gray-200 flex">
       <div id="imageCard" className="border py-5 w-[40%] flex justify-center">
-        <Image src={plan} className="w-[100%]" />
+        <Image src={plan} className="w-[100%]" alt="capture" />
       </div>
       <div id="captureDetail" className="py-2 px-4 flex flex-col gap-1">
         <div id="date" className="text-gray-500 text-[15px]">

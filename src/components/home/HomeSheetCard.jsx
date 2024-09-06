@@ -37,7 +37,7 @@ const HomeSheetCard = () => {
         return (
           <div key={index} className="flex gap-5 hover:shadow w-[400px] items-center p-4 rounded-lg">
             <div id="plansImage">
-              <Image src={sheet.image} width={150} height={50} />
+              <Image src={sheet.image} width={150} height={50} alt="test"/>
             </div>
             <div id="plansDetail" className="flex flex-col gap-4">
               <span className="text-[15px]">پشت بام</span>

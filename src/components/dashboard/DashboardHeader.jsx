@@ -16,7 +16,7 @@ const DashboardHeader = () => {
     <div id="headerContainer" className="h-[10vh] w-[100vw] flex shadow-sm">
       <div id="logo&routes" className="px-5 flex justify-start items-center gap-10 flex-1">
         <div id="logo" className="">
-          <Image src={Logo} width={50} height={96} />
+          <Image src={Logo} width={50} height={96}  alt="header"/>
         </div>
         <div id="detail">
           <span id="captureName"></span>
