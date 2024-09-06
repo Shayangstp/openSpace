@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import React, { Fragment, useEffect, useState } from "react";
-import Plans from "../../../public/images/plansimage.jpg";
+import Plans from "../../../public/images/plansImage.jpg";
 import { useSelector, useDispatch } from "react-redux";
 import {
   selectSheetsSize,

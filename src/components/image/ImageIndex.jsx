@@ -10,6 +10,7 @@ import {
 import { Button } from "../ui/button";
 import { Lock, Unlock } from "lucide-react";
 
+
 const ImageIndex = () => {
   const dispatch = useDispatch();
   const imageSplitView = useSelector(selectImageSplitView);
@@ -18,11 +19,11 @@ const ImageIndex = () => {
   return (
     <div id="container" className="relative">
       {!imageSplitView ? (
-        <ImageRoot />
+        <ImageRoot/>
       ) : (
         <div className="flex gap-2 transition-all">
           <ImageRoot />
-          <ImageRoot />
+         
         </div>
       )}
       {imageSplitView && (

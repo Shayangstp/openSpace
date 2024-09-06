@@ -41,7 +41,7 @@ const ImagePlayTimeMoreController = () => {
       <div id="player" className="flex gap-1">
         {playerData.map((item, index) => {
           return (
-            <div className="cursor-pointer">
+            <div key={index} className="cursor-pointer">
               {imageSplitView && (index === 0 || index === 2 || index === 4) ? null : (
                 <div
                   key={index}

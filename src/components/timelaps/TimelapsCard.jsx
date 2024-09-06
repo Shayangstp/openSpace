@@ -75,7 +75,7 @@ const TimelapsCard = () => {
     <div id="container" className="mr-4 mt-5 flex flex-wrap gap-10 p-3 rounded-2xl cursor-pointer">
       {timelapsData.map((item, index) => {
         return (
-          <div id="cardContainer" className="hover:shadow-md  p-3 rounded-2xl cursor-pointer">
+          <div key={index} id="cardContainer" className="hover:shadow-md  p-3 rounded-2xl cursor-pointer">
             <div id="imageContainer" className="relative">
               <Image
                 src={item.imageUrl}

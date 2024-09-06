@@ -9,4 +9,4 @@ const rootPage = () => {
   );
 };
 
-export default rootPage;
+export default {rootPage};

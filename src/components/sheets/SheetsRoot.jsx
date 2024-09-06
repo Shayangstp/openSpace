@@ -29,4 +29,4 @@ const SheetsRoot = () => {
   );
 };
 
-export default SheetsRoot;
+export default {SheetsRoot};

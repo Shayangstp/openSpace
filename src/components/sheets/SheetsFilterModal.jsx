@@ -57,7 +57,7 @@ const SheetsFilterModal = () => {
           <>
             {checkBoxData.map((item, index) => {
               return (
-                <div id={item.id} className="flex justify-start items-center gap-5 border-b py-3">
+                <div key={index} id={item.id} className="flex justify-start items-center gap-5 border-b py-3">
                   <Checkbox id={item.id} />
                   <label
                     htmlFor={item.id}
