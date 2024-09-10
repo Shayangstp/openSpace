@@ -1,4 +1,5 @@
 // import { Inter } from "next/font/google";
+"use client";
 import { iranSans } from "@/lib/font";
 import "./globals.css";
 import ReduxStoreProviders from "@/providers/ReduxStoreProviders";
