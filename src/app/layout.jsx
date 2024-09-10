@@ -6,11 +6,6 @@ import ReduxStoreProviders from "@/providers/ReduxStoreProviders";
 import DashboardRoot from "@/components/dashboard/DashboardRoot";
 import "react-calendar-datetime-picker/dist/style.css";
 
-export const metadata = {
-  title: "OpenSpaceDemo",
-  description: "constructore PM Demo",
-};
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
